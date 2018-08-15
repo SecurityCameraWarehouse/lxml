@@ -3,9 +3,15 @@
 ```bash
 aws ec2 run-instances --image-id ami-97785bed --instance-type t2.micro --count 1 --key-name bryan_mbr --security-group-ids sg-e66f1590
 ```
+
+# use describe-instances to get public dns name
+```bash
+aws ec2 describe-instances --instance-id i-0379fa68c8136646a
+```
+
 # ssh to machine
 ```bash
-ssh -i $KAWS ec2-user@ec2-52-206-2-198.compute-1.amazonaws.com
+ssh -i $KAWS ec2-user@ec2-34-207-181-252.compute-1.amazonaws.com
 ```
 
 # this will update yum, and install pip on amazon ami
@@ -23,6 +29,7 @@ pushd builder
 
 # upgrade pip and install lxml
 ```bash
+sudo yum install -y gcc
 ./bin/pip install --upgrade pip
 ./bin/pip install lxml==3.7.3
 ```
@@ -30,7 +37,7 @@ pushd builder
 # navigate to lxml package and ZIP
 ```bash
 pushd lib64/python3.6/site-packages/
-zip -r9 lxml-3.7.3.amzn1.zip lxml lxml-3.7.3-py3.5.egg-info/
+zip -r9 lxml-3.7.3.amzn1.zip lxml lxml-3.7.3.dist-info/
 ```
 
 # scp file
@@ -40,5 +47,5 @@ scp -i $KAWS ec2-user@ec2-52-206-2-198.compute-1.amazonaws.com:./builder/lib64/p
 
 # terminate instance
 ```bash
-aws ec2 terminate-instances --instance-id i-07b59e04fb55b95c4
+aws ec2 terminate-instances --instance-id i-0af1df4d475742005
 ```
