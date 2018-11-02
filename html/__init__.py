@@ -51,7 +51,7 @@ try:
 except ImportError:
     from collections import MutableMapping, MutableSet
 
-from .. import etree
+from . import etree
 from . import defs
 from ._setmixin import SetMixin
 
