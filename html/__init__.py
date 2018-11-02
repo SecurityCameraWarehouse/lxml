@@ -30,9 +30,10 @@
 
 """The ``lxml.html`` tool set for HTML handling.
 """
-
 from __future__ import absolute_import
-
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.pardir))
 __all__ = [
     'document_fromstring', 'fragment_fromstring', 'fragments_fromstring', 'fromstring',
     'tostring', 'Element', 'defs', 'open_in_browser', 'submit_form',
@@ -41,15 +42,14 @@ __all__ = [
 
 
 import copy
-import sys
 import re
 from functools import partial
-
 try:
     # while unnecessary, importing from 'collections.abc' is the right way to do it
     from collections.abc import MutableMapping, MutableSet
 except ImportError:
     from collections import MutableMapping, MutableSet
+
 
 from .. import etree
 from . import defs
