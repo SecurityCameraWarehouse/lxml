@@ -21,21 +21,21 @@ source ./builder/bin/activate
 pushd builder
 
 # upgrade pip and install lxml
-sudo yum install -y gcc
+sudo yum install -y gcc libxml2 libxml2-devel libxslt libxslt-devel
 ./bin/pip install --upgrade pip
-./bin/pip install lxml==3.7.3
+./bin/pip install lxml==4.2.5
 
 # navigate to lxml package and ZIP
 pushd lib64/python3.6/site-packages/
-zip -r9 lxml-3.7.3.amzn1.zip lxml lxml-3.7.3.dist-info/
+zip -r9 lxml-4.2.5.amzn1.zip lxml lxml-4.2.5.dist-info/
 ```
 
 # scp file
 ```bash
-scp -i $KAWS ec2-user@ec2-52-206-2-198.compute-1.amazonaws.com:./builder/lib64/python3.6/site-packages/lxml-3.7.3.amzn1.zip .
+scp -i $KAWS ec2-user@$DNSNAME:./builder/lib64/python3.6/site-packages/lxml-4.2.5.amzn1.zip .
 ```
 
 # terminate instance
 ```bash
-aws ec2 terminate-instances --instance-id i-0af1df4d475742005
+aws ec2 terminate-instances --instance-id $INSTANCEID
 ```
