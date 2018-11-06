@@ -7,5 +7,6 @@ setup(
     long_description="readme",
     license=license,
     python_requires='>=3.6',
-    packages=['lxml']
+    packages=['lxml'],
+    include_package_data=True
 )
