@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='lxml',
-    version='4.2.4',
+    version='4.2.5',
     description='lxml for lambda',
     long_description="readme",
     license=license,
